@@ -303,18 +303,6 @@ int init_frame_buffer_locked(struct private_module_t *module)
 	module->numBuffers = info.yres_virtual / info.yres;
 	module->bufferMask = 0;
 
-#if GRALLOC_ARM_UMP_MODULE
-#ifdef IOCTL_GET_FB_UMP_SECURE_ID
-	ioctl(fd, IOCTL_GET_FB_UMP_SECURE_ID, &module->framebuffer->ump_id);
-#endif
-
-	if ((int)UMP_INVALID_SECURE_ID != module->framebuffer->ump_id)
-	{
-		AINF("framebuffer accessed with UMP secure ID %i\n", module->framebuffer->ump_id);
-	}
-
-#endif
-
 	return 0;
 }
 
@@ -332,9 +320,6 @@ static int fb_close(struct hw_device_t *device)
 
 	if (dev)
 	{
-#if GRALLOC_ARM_UMP_MODULE
-		ump_close();
-#endif
 		free(dev);
 	}
 

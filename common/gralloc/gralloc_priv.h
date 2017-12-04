@@ -32,7 +32,6 @@
 #include <utils/Log.h>
 
 #ifdef MALI_600
-#define GRALLOC_ARM_UMP_MODULE 0
 #define GRALLOC_ARM_DMA_BUF_MODULE 1
 #else
 
@@ -44,7 +43,6 @@
  */
 
 /*#define IOCTL_GET_FB_UMP_SECURE_ID    _IOR('F', 311, unsigned int)*/
-#define GRALLOC_ARM_UMP_MODULE 0
 #define GRALLOC_ARM_DMA_BUF_MODULE 1
 
 /* NOTE:
@@ -82,10 +80,6 @@ typedef struct ion_handle *ion_user_handle_t;
  */
 #define MALI_GRALLOC_HARDWARE_MAX_STR_LEN 8
 #define NUM_FB_BUFFERS 2
-
-#if GRALLOC_ARM_UMP_MODULE
-#include <ump/ump.h>
-#endif
 
 #define MALI_IGNORE(x) (void)x
 typedef enum
@@ -175,11 +169,6 @@ struct private_handle_t
 
 	mali_gralloc_yuv_info yuv_info;
 
-	// Following members are for UMP memory only
-#if GRALLOC_ARM_UMP_MODULE
-	int     ump_id;
-	int     ump_mem_handle;
-#endif
 
 	// Following members is for framebuffer only
 	int     fd;
@@ -199,40 +188,6 @@ struct private_handle_t
 	static const int sNumFds = GRALLOC_ARM_NUM_FDS;
 	static const int sMagic = 0x3141592;
 
-#if GRALLOC_ARM_UMP_MODULE
-	private_handle_t(int flags, int usage, int size, void *base, int lock_state, ump_secure_id secure_id, ump_handle handle):
-#if GRALLOC_ARM_DMA_BUF_MODULE
-		share_fd(-1),
-#endif
-		magic(sMagic),
-		flags(flags),
-		usage(usage),
-		size(size),
-		width(0),
-		height(0),
-		format(0),
-		stride(0),
-		base(base),
-		lockState(lock_state),
-		writeOwner(0),
-		pid(getpid()),
-		yuv_info(MALI_YUV_NO_INFO),
-		ump_id((int)secure_id),
-		ump_mem_handle((int)handle),
-		fd(0),
-		offset(0)
-#if GRALLOC_ARM_DMA_BUF_MODULE
-		,
-		ion_hnd(ION_INVALID_HANDLE)
-#endif
-
-	{
-		version = sizeof(native_handle);
-		numFds = sNumFds;
-		numInts = (sizeof(private_handle_t) - sizeof(native_handle)) / sizeof(int) - sNumFds;
-	}
-#endif
-
 #if GRALLOC_ARM_DMA_BUF_MODULE
 	private_handle_t(int flags, int usage, int size, void *base, int lock_state):
 		share_fd(-1),
@@ -249,10 +204,6 @@ struct private_handle_t
 		writeOwner(0),
 		pid(getpid()),
 		yuv_info(MALI_YUV_NO_INFO),
-#if GRALLOC_ARM_UMP_MODULE
-		ump_id((int)UMP_INVALID_SECURE_ID),
-		ump_mem_handle((int)UMP_INVALID_MEMORY_HANDLE),
-#endif
 		fd(0),
 		offset(0),
 		ion_hnd(ION_INVALID_HANDLE)
@@ -282,10 +233,6 @@ struct private_handle_t
 		writeOwner(0),
 		pid(getpid()),
 		yuv_info(MALI_YUV_NO_INFO),
-#if GRALLOC_ARM_UMP_MODULE
-		ump_id((int)UMP_INVALID_SECURE_ID),
-		ump_mem_handle((int)UMP_INVALID_MEMORY_HANDLE),
-#endif
 		fd(fb_file),
 		offset(fb_offset)
 #if GRALLOC_ARM_DMA_BUF_MODULE
