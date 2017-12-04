@@ -292,104 +292,6 @@ static int gralloc_alloc_buffer(alloc_device_t *dev, size_t size, int usage, buf
 
 }
 
-static int gralloc_alloc_framebuffer_locked(alloc_device_t *dev, size_t size, int usage, buffer_handle_t *pHandle)
-{
-	private_module_t *m = reinterpret_cast<private_module_t *>(dev->common.module);
-
-	// allocate the framebuffer
-	if (m->framebuffer == NULL)
-	{
-		// initialize the framebuffer, the framebuffer is mapped once and forever.
-		int err = init_frame_buffer_locked(m);
-
-		if (err < 0)
-		{
-			return err;
-		}
-	}
-
-	const uint32_t bufferMask = m->bufferMask;
-	const uint32_t numBuffers = m->numBuffers;
-	const size_t bufferSize = m->finfo.line_length * m->info.yres;
-
-	if (numBuffers == 1)
-	{
-		// If we have only one buffer, we never use page-flipping. Instead,
-		// we return a regular buffer which will be memcpy'ed to the main
-		// screen when post is called.
-		int newUsage = (usage & ~GRALLOC_USAGE_HW_FB) | GRALLOC_USAGE_HW_2D;
-		AERR("fallback to single buffering. Virtual Y-res too small %d", m->info.yres);
-		return gralloc_alloc_buffer(dev, bufferSize, newUsage, pHandle);
-	}
-
-	if (bufferMask >= ((1LU << numBuffers) - 1))
-	{
-		// We ran out of buffers.
-		return -ENOMEM;
-	}
-
-	void *vaddr = m->framebuffer->base;
-
-	// find a free slot
-	for (uint32_t i = 0 ; i < numBuffers ; i++)
-	{
-		if ((bufferMask & (1LU << i)) == 0)
-		{
-			m->bufferMask |= (1LU << i);
-			break;
-		}
-
-		vaddr = (void *)((uintptr_t)vaddr + bufferSize);
-	}
-
-	// The entire framebuffer memory is already mapped, now create a buffer object for parts of this memory
-	private_handle_t *hnd = new private_handle_t(private_handle_t::PRIV_FLAGS_FRAMEBUFFER, usage, size, vaddr,
-	        0, dup(m->framebuffer->fd), (uintptr_t)vaddr - (uintptr_t) m->framebuffer->base);
-#if GRALLOC_ARM_UMP_MODULE
-	hnd->ump_id = m->framebuffer->ump_id;
-
-	/* create a backing ump memory handle if the framebuffer is exposed as a secure ID */
-	if ((int)UMP_INVALID_SECURE_ID != hnd->ump_id)
-	{
-		hnd->ump_mem_handle = (int)ump_handle_create_from_secure_id(hnd->ump_id);
-
-		if ((int)UMP_INVALID_MEMORY_HANDLE == hnd->ump_mem_handle)
-		{
-			AINF("warning: unable to create UMP handle from secure ID %i\n", hnd->ump_id);
-		}
-	}
-
-#endif
-
-#if GRALLOC_ARM_DMA_BUF_MODULE
-	{
-#ifdef FBIOGET_DMABUF
-		struct fb_dmabuf_export fb_dma_buf;
-
-		if (ioctl(m->framebuffer->fd, FBIOGET_DMABUF, &fb_dma_buf) == 0)
-		{
-			AINF("framebuffer accessed with dma buf (fd 0x%x)\n", (int)fb_dma_buf.fd);
-			hnd->share_fd = fb_dma_buf.fd;
-		}
-
-#endif
-	}
-#endif
-
-	*pHandle = hnd;
-
-	return 0;
-}
-
-static int gralloc_alloc_framebuffer(alloc_device_t *dev, size_t size, int usage, buffer_handle_t *pHandle)
-{
-	private_module_t *m = reinterpret_cast<private_module_t *>(dev->common.module);
-	pthread_mutex_lock(&m->lock);
-	int err = gralloc_alloc_framebuffer_locked(dev, size, usage, pHandle);
-	pthread_mutex_unlock(&m->lock);
-	return err;
-}
-
 static int alloc_device_alloc(alloc_device_t *dev, int w, int h, int format, int usage, buffer_handle_t *pHandle, int *pStride)
 {
 	if (!pHandle || !pStride)
@@ -478,18 +380,7 @@ static int alloc_device_alloc(alloc_device_t *dev, int w, int h, int format, int
 
 	int err;
 
-#ifndef MALI_600
-
-	if (usage & GRALLOC_USAGE_HW_FB)
-	{
-		err = gralloc_alloc_framebuffer(dev, size, usage, pHandle);
-	}
-	else
-#endif
-
-	{
-		err = gralloc_alloc_buffer(dev, size, usage, pHandle);
-	}
+	err = gralloc_alloc_buffer(dev, size, usage, pHandle);
 
 	if (err < 0)
 	{
@@ -547,25 +438,7 @@ static int alloc_device_free(alloc_device_t *dev, buffer_handle_t handle)
 
 	private_handle_t const *hnd = reinterpret_cast<private_handle_t const *>(handle);
 
-	if (hnd->flags & private_handle_t::PRIV_FLAGS_FRAMEBUFFER)
-	{
-		// free this buffer
-		private_module_t *m = reinterpret_cast<private_module_t *>(dev->common.module);
-		const size_t bufferSize = m->finfo.line_length * m->info.yres;
-		int index = ((uintptr_t)hnd->base - (uintptr_t)m->framebuffer->base) / bufferSize;
-		m->bufferMask &= ~(1 << index);
-		close(hnd->fd);
-
-#if GRALLOC_ARM_UMP_MODULE
-
-		if ((int)UMP_INVALID_MEMORY_HANDLE != hnd->ump_mem_handle)
-		{
-			ump_reference_release((ump_handle)hnd->ump_mem_handle);
-		}
-
-#endif
-	}
-	else if (hnd->flags & private_handle_t::PRIV_FLAGS_USES_UMP)
+	if (hnd->flags & private_handle_t::PRIV_FLAGS_USES_UMP)
 	{
 #if GRALLOC_ARM_UMP_MODULE
 

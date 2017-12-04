@@ -94,11 +94,7 @@ static int gralloc_register_buffer(gralloc_module_t const *module, buffer_handle
 
 	hnd->pid = getpid();
 
-	if (hnd->flags & private_handle_t::PRIV_FLAGS_FRAMEBUFFER)
-	{
-		AERR("Can't register buffer 0x%p as it is a framebuffer", handle);
-	}
-	else if (hnd->flags & private_handle_t::PRIV_FLAGS_USES_UMP)
+	if (hnd->flags & private_handle_t::PRIV_FLAGS_USES_UMP)
 	{
 #if GRALLOC_ARM_UMP_MODULE
 		hnd->ump_mem_handle = (int)ump_handle_create_from_secure_id(hnd->ump_id);
@@ -248,11 +244,7 @@ static int gralloc_unregister_buffer(gralloc_module_t const *module, buffer_hand
 
 	AERR_IF(hnd->lockState & private_handle_t::LOCK_STATE_READ_MASK, "[unregister] handle %p still locked (state=%08x)", hnd, hnd->lockState);
 
-	if (hnd->flags & private_handle_t::PRIV_FLAGS_FRAMEBUFFER)
-	{
-		AERR("Can't unregister buffer 0x%p as it is a framebuffer", handle);
-	}
-	else if (hnd->pid == getpid()) // never unmap buffers that were not registered in this process
+	if (hnd->pid == getpid()) // never unmap buffers that were not registered in this process
 	{
 		pthread_mutex_lock(&s_map_lock);
 

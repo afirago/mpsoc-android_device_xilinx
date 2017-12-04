@@ -1,0 +1,211 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AERR	alloc_device.h	28;"	d
+AERR_IF	alloc_device.h	31;"	d
+AINF	alloc_device.h	25;"	d
+AWAR	alloc_device.h	22;"	d
+FBIO_WAITFORVSYNC	framebuffer_device.cpp	96;"	d	file:
+GRALLOC_ALIGN	alloc_device.cpp	49;"	d	file:
+GRALLOC_ARM_DMA_BUF_MODULE	gralloc_priv.h	36;"	d
+GRALLOC_ARM_DMA_BUF_MODULE	gralloc_priv.h	48;"	d
+GRALLOC_ARM_NUM_FDS	gralloc_priv.h	245;"	d
+GRALLOC_ARM_NUM_FDS	gralloc_priv.h	247;"	d
+GRALLOC_ARM_UMP_MODULE	gralloc_priv.h	35;"	d
+GRALLOC_ARM_UMP_MODULE	gralloc_priv.h	47;"	d
+GRALLOC_HELPER_H_	gralloc_helper.h	20;"	d
+GRALLOC_PRIV_H_	gralloc_priv.h	20;"	d
+GRALLOC_VSYNC_REPORT_H_	gralloc_vsync_report.h	18;"	d
+HAL_MODULE_INFO_SYM	gralloc_module.cpp	/^struct private_module_t HAL_MODULE_INFO_SYM;$/;"	v	typeref:struct:private_module_t
+INIT_ZERO	gralloc_module.cpp	487;"	d	file:
+INIT_ZERO	gralloc_module.cpp	518;"	d	file:
+ION_INVALID_HANDLE	gralloc_priv.h	67;"	d
+ION_INVALID_HANDLE	gralloc_priv.h	72;"	d
+LOCAL_CFLAGS	Android.mk	/^LOCAL_CFLAGS := -DLOG_TAG=\\"gralloc\\" -DGRALLOC_16_BITS \\$/;"	m
+LOCAL_C_INCLUDES	Android.mk	/^LOCAL_C_INCLUDES := \\$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := gralloc.$(TARGET_BOARD_PLATFORM)$/;"	m
+LOCAL_MODULE_RELATIVE_PATH	Android.mk	/^LOCAL_MODULE_RELATIVE_PATH := hw$/;"	m
+LOCAL_PATH	Android.mk	/^LOCAL_PATH := $(call my-dir)$/;"	m
+LOCAL_SHARED_LIBRARIES	Android.mk	/^LOCAL_SHARED_LIBRARIES := liblog libcutils libGLESv1_CM $(SHARED_MEM_LIBS)$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := \\$/;"	m
+LOCK_STATE_MAPPED	gralloc_priv.h	/^		LOCK_STATE_MAPPED    =   1 << 30,$/;"	e	enum:private_handle_t::__anon4
+LOCK_STATE_READ_MASK	gralloc_priv.h	/^		LOCK_STATE_READ_MASK =   0x3FFFFFFF$/;"	e	enum:private_handle_t::__anon4
+LOCK_STATE_UNREGISTERED	gralloc_priv.h	/^		LOCK_STATE_UNREGISTERED  =   1 << 29,$/;"	e	enum:private_handle_t::__anon4
+LOCK_STATE_WRITE	gralloc_priv.h	/^		LOCK_STATE_WRITE     =   1 << 31,$/;"	e	enum:private_handle_t::__anon4
+MALI_GRALLOC_HARDWARE_MAX_STR_LEN	gralloc_priv.h	83;"	d
+MALI_IGNORE	gralloc_priv.h	90;"	d
+MALI_VSYNC_EVENT_BEGIN_WAIT	gralloc_vsync_report.h	/^	MALI_VSYNC_EVENT_BEGIN_WAIT = 0,$/;"	e	enum:mali_vsync_event
+MALI_VSYNC_EVENT_END_WAIT	gralloc_vsync_report.h	/^	MALI_VSYNC_EVENT_END_WAIT$/;"	e	enum:mali_vsync_event
+MALI_YUV_BT601_NARROW	gralloc_priv.h	/^	MALI_YUV_BT601_NARROW,$/;"	e	enum:__anon1
+MALI_YUV_BT601_WIDE	gralloc_priv.h	/^	MALI_YUV_BT601_WIDE,$/;"	e	enum:__anon1
+MALI_YUV_BT709_NARROW	gralloc_priv.h	/^	MALI_YUV_BT709_NARROW,$/;"	e	enum:__anon1
+MALI_YUV_BT709_WIDE	gralloc_priv.h	/^	MALI_YUV_BT709_WIDE,$/;"	e	enum:__anon1
+MALI_YUV_NO_INFO	gralloc_priv.h	/^	MALI_YUV_NO_INFO,$/;"	e	enum:__anon1
+NUM_BUFFERS	framebuffer_device.cpp	42;"	d	file:
+NUM_FB_BUFFERS	gralloc_priv.h	84;"	d
+PAGE_FLIP	framebuffer_device.cpp	/^	PAGE_FLIP = 0x00000001,$/;"	e	enum:__anon6	file:
+PRIV_FLAGS_FRAMEBUFFER	gralloc_priv.h	/^		PRIV_FLAGS_FRAMEBUFFER = 0x00000001,$/;"	e	enum:private_handle_t::__anon3
+PRIV_FLAGS_USES_ION	gralloc_priv.h	/^		PRIV_FLAGS_USES_ION    = 0x00000004,$/;"	e	enum:private_handle_t::__anon3
+PRIV_FLAGS_USES_UMP	gralloc_priv.h	/^		PRIV_FLAGS_USES_UMP    = 0x00000002,$/;"	e	enum:private_handle_t::__anon3
+PRIV_USAGE_LOCKED_FOR_POST	gralloc_priv.h	/^		PRIV_USAGE_LOCKED_FOR_POST = 0x80000000$/;"	e	enum:private_module_t::__anon2
+S3CFB_SET_VSYNC_INT	framebuffer_device.cpp	97;"	d	file:
+SHARED_MEM_LIBS	Android.mk	/^SHARED_MEM_LIBS := libion libhardware libdrm$/;"	m
+UNUSED	gralloc_drm_xilinx.c	9;"	d	file:
+UNUSED	gralloc_drm_xilinx.cpp	11;"	d	file:
+alloc	gralloc_priv.h	/^	struct gralloc_drm_bo_t *(*alloc)(struct gralloc_drm_drv_t *drv,$/;"	m	struct:gralloc_drm_drv_t	typeref:struct:gralloc_drm_drv_t::alloc
+alloc_device_alloc	alloc_device.cpp	/^static int alloc_device_alloc(alloc_device_t *dev, int w, int h, int format, int usage, buffer_handle_t *pHandle, int *pStride)$/;"	f	file:
+alloc_device_close	alloc_device.cpp	/^static int alloc_device_close(struct hw_device_t *device)$/;"	f	file:
+alloc_device_free	alloc_device.cpp	/^static int alloc_device_free(alloc_device_t *dev, buffer_handle_t handle)$/;"	f	file:
+alloc_device_open	alloc_device.cpp	/^int alloc_device_open(hw_module_t const *module, const char *name, hw_device_t **device)$/;"	f
+base	gralloc_drm_xilinx.c	/^	struct gralloc_drm_bo_t base;$/;"	m	struct:xilinx_buffer	typeref:struct:xilinx_buffer::gralloc_drm_bo_t	file:
+base	gralloc_drm_xilinx.c	/^	struct gralloc_drm_drv_t base;$/;"	m	struct:xilinx_info	typeref:struct:xilinx_info::gralloc_drm_drv_t	file:
+base	gralloc_drm_xilinx.cpp	/^	struct gralloc_drm_bo_t base;$/;"	m	struct:xilinx_buffer	typeref:struct:xilinx_buffer::gralloc_drm_bo_t	file:
+base	gralloc_drm_xilinx.cpp	/^	struct gralloc_drm_drv_t base;$/;"	m	struct:xilinx_info	typeref:struct:xilinx_info::gralloc_drm_drv_t	file:
+base	gralloc_priv.h	/^		void   *base;$/;"	m	union:private_handle_t::__anon5
+base	gralloc_priv.h	/^	gralloc_module_t base;$/;"	m	struct:private_module_t
+bo	gralloc_drm_xilinx.c	/^	struct xilinx_bo *bo;$/;"	m	struct:xilinx_buffer	typeref:struct:xilinx_buffer::xilinx_bo	file:
+bo	gralloc_drm_xilinx.cpp	/^	struct xilinx_bo *bo;$/;"	m	struct:xilinx_buffer	typeref:struct:xilinx_buffer::xilinx_bo	file:
+bufferMask	gralloc_priv.h	/^	uint32_t bufferMask;$/;"	m	struct:private_module_t
+compositionComplete	framebuffer_device.cpp	/^int compositionComplete(struct framebuffer_device_t *dev)$/;"	f
+currentBuffer	gralloc_priv.h	/^	buffer_handle_t currentBuffer;$/;"	m	struct:private_module_t
+destroy	gralloc_priv.h	/^	void (*destroy)(struct gralloc_drm_drv_t *drv);$/;"	m	struct:gralloc_drm_drv_t
+dev	gralloc_drm_xilinx.cpp	/^	struct xilinx_device	*dev;$/;"	m	struct:xilinx_bo	typeref:struct:xilinx_bo::xilinx_device	file:
+drm	gralloc_priv.h	/^	struct gralloc_drm_t *drm;$/;"	m	struct:gralloc_drm_bo_t	typeref:struct:gralloc_drm_bo_t::gralloc_drm_t
+drm	gralloc_priv.h	/^	struct gralloc_drm_t *drm;$/;"	m	struct:private_module_t	typeref:struct:private_module_t::gralloc_drm_t
+drm_gem_xilinx_alloc	gralloc_drm_xilinx.c	/^static struct gralloc_drm_bo_t *drm_gem_xilinx_alloc($/;"	f	file:
+drm_gem_xilinx_alloc	gralloc_drm_xilinx.cpp	/^static struct gralloc_drm_bo_t *drm_gem_xilinx_alloc($/;"	f	file:
+drm_gem_xilinx_destroy	gralloc_drm_xilinx.c	/^static void drm_gem_xilinx_destroy(struct gralloc_drm_drv_t *drv)$/;"	f	file:
+drm_gem_xilinx_destroy	gralloc_drm_xilinx.cpp	/^static void drm_gem_xilinx_destroy(struct gralloc_drm_drv_t *drv)$/;"	f	file:
+drm_gem_xilinx_free	gralloc_drm_xilinx.c	/^static void drm_gem_xilinx_free(struct gralloc_drm_drv_t *drv,$/;"	f	file:
+drm_gem_xilinx_free	gralloc_drm_xilinx.cpp	/^static void drm_gem_xilinx_free(struct gralloc_drm_drv_t *drv,$/;"	f	file:
+drm_gem_xilinx_map	gralloc_drm_xilinx.c	/^static int drm_gem_xilinx_map(struct gralloc_drm_drv_t *drv,$/;"	f	file:
+drm_gem_xilinx_map	gralloc_drm_xilinx.cpp	/^static int drm_gem_xilinx_map(struct gralloc_drm_drv_t *drv,$/;"	f	file:
+drm_gem_xilinx_unmap	gralloc_drm_xilinx.c	/^static void drm_gem_xilinx_unmap(struct gralloc_drm_drv_t *drv,$/;"	f	file:
+drm_gem_xilinx_unmap	gralloc_drm_xilinx.cpp	/^static void drm_gem_xilinx_unmap(struct gralloc_drm_drv_t *drv,$/;"	f	file:
+drm_hnd	gralloc_priv.h	/^	unsigned int drm_hnd;$/;"	m	struct:private_handle_t
+drm_init	gralloc_module.cpp	/^static int drm_init(struct private_module_t *module)$/;"	f	file:
+drm_xilinx_gem_create	gralloc_drm_xilinx.cpp	/^struct drm_xilinx_gem_create {$/;"	s	file:
+drm_xilinx_gem_map_off	gralloc_drm_xilinx.cpp	/^struct drm_xilinx_gem_map_off {$/;"	s	file:
+drv	gralloc_priv.h	/^	struct gralloc_drm_drv_t *drv;$/;"	m	struct:gralloc_drm_t	typeref:struct:gralloc_drm_t::gralloc_drm_drv_t
+dynamicCast	gralloc_priv.h	/^	static private_handle_t *dynamicCast(const native_handle *in)$/;"	f	struct:private_handle_t
+fb_close	framebuffer_device.cpp	/^static int fb_close(struct hw_device_t *device)$/;"	f	file:
+fb_dmabuf_export	gralloc_priv.h	/^struct fb_dmabuf_export$/;"	s
+fb_handle	gralloc_priv.h	/^	int fb_handle; \/* the GEM handle of the bo *\/$/;"	m	struct:gralloc_drm_bo_t
+fb_id	gralloc_priv.h	/^	int fb_id;     \/* the fb id *\/$/;"	m	struct:gralloc_drm_bo_t
+fb_post	framebuffer_device.cpp	/^static int fb_post(struct framebuffer_device_t *dev, buffer_handle_t buffer)$/;"	f	file:
+fb_set_swap_interval	framebuffer_device.cpp	/^static int fb_set_swap_interval(struct framebuffer_device_t *dev, int interval)$/;"	f	file:
+fd	gralloc_drm_xilinx.c	/^	int fd;$/;"	m	struct:xilinx_info	file:
+fd	gralloc_drm_xilinx.cpp	/^	int fd;$/;"	m	struct:xilinx_device	file:
+fd	gralloc_drm_xilinx.cpp	/^	int fd;$/;"	m	struct:xilinx_info	file:
+fd	gralloc_priv.h	/^	__u32 fd;$/;"	m	struct:fb_dmabuf_export
+fd	gralloc_priv.h	/^	int     fd;$/;"	m	struct:private_handle_t
+fd	gralloc_priv.h	/^	int fd;$/;"	m	struct:gralloc_drm_t
+finfo	gralloc_priv.h	/^	struct fb_fix_screeninfo finfo;$/;"	m	struct:private_module_t	typeref:struct:private_module_t::fb_fix_screeninfo
+flags	gralloc_drm_xilinx.cpp	/^	uint32_t		flags;$/;"	m	struct:xilinx_bo	file:
+flags	gralloc_drm_xilinx.cpp	/^	uint32_t flags;$/;"	m	struct:drm_xilinx_gem_create	file:
+flags	gralloc_priv.h	/^	__u32 flags;$/;"	m	struct:fb_dmabuf_export
+flags	gralloc_priv.h	/^	int     flags;$/;"	m	struct:private_handle_t
+flags	gralloc_priv.h	/^	uint32_t flags;$/;"	m	struct:private_module_t
+format	gralloc_priv.h	/^	int     format;$/;"	m	struct:private_handle_t
+fps	gralloc_priv.h	/^	float fps;$/;"	m	struct:private_module_t
+framebuffer	gralloc_priv.h	/^	struct private_handle_t *framebuffer;$/;"	m	struct:private_module_t	typeref:struct:private_module_t::private_handle_t
+framebuffer_device_open	framebuffer_device.cpp	/^int framebuffer_device_open(hw_module_t const *module, const char *name, hw_device_t **device)$/;"	f
+free	gralloc_priv.h	/^	void (*free)(struct gralloc_drm_drv_t *drv,$/;"	m	struct:gralloc_drm_drv_t
+gralloc_alloc_buffer	alloc_device.cpp	/^static int gralloc_alloc_buffer(alloc_device_t *dev, int width, int height, int bpp, int usage, size_t *stride, buffer_handle_t *pHandle)$/;"	f	file:
+gralloc_device_open	gralloc_module.cpp	/^static int gralloc_device_open(const hw_module_t *module, const char *name, hw_device_t **device)$/;"	f	file:
+gralloc_drm_bo_t	gralloc_priv.h	/^struct gralloc_drm_bo_t {$/;"	s
+gralloc_drm_create	gralloc_module.cpp	/^struct gralloc_drm_t *gralloc_drm_create(void)$/;"	f
+gralloc_drm_destroy	gralloc_module.cpp	/^void gralloc_drm_destroy(struct gralloc_drm_t *drm)$/;"	f
+gralloc_drm_drv_create_for_xilinx	gralloc_drm_xilinx.c	/^struct gralloc_drm_drv_t *gralloc_drm_drv_create_for_xilinx(int fd)$/;"	f
+gralloc_drm_drv_create_for_xilinx	gralloc_drm_xilinx.cpp	/^struct gralloc_drm_drv_t *gralloc_drm_drv_create_for_xilinx(int fd)$/;"	f
+gralloc_drm_drv_t	gralloc_priv.h	/^struct gralloc_drm_drv_t {$/;"	s
+gralloc_drm_t	gralloc_priv.h	/^struct gralloc_drm_t {$/;"	s
+gralloc_lock	gralloc_module.cpp	/^static int gralloc_lock(gralloc_module_t const *module, buffer_handle_t handle, int usage, int l, int t, int w, int h, void **vaddr)$/;"	f	file:
+gralloc_mali_vsync_report	gralloc_vsync_report.h	/^inline void gralloc_mali_vsync_report(mali_vsync_event event)$/;"	f
+gralloc_module_methods	gralloc_module.cpp	/^static struct hw_module_methods_t gralloc_module_methods =$/;"	v	typeref:struct:hw_module_methods_t	file:
+gralloc_register_buffer	gralloc_module.cpp	/^static int gralloc_register_buffer(gralloc_module_t const *module, buffer_handle_t handle)$/;"	f	file:
+gralloc_unlock	gralloc_module.cpp	/^static int gralloc_unlock(gralloc_module_t const *module, buffer_handle_t handle)$/;"	f	file:
+gralloc_unregister_buffer	gralloc_module.cpp	/^static int gralloc_unregister_buffer(gralloc_module_t const *module, buffer_handle_t handle)$/;"	f	file:
+handle	gralloc_drm_xilinx.cpp	/^	uint32_t		handle;$/;"	m	struct:xilinx_bo	file:
+handle	gralloc_drm_xilinx.cpp	/^	uint32_t handle;$/;"	m	struct:drm_xilinx_gem_create	file:
+handle	gralloc_drm_xilinx.cpp	/^	uint32_t handle;$/;"	m	struct:drm_xilinx_gem_map_off	file:
+handle	gralloc_priv.h	/^	struct private_handle_t *handle;$/;"	m	struct:gralloc_drm_bo_t	typeref:struct:gralloc_drm_bo_t::private_handle_t
+height	gralloc_priv.h	/^	int     height;$/;"	m	struct:private_handle_t
+imported	gralloc_priv.h	/^	int imported;  \/* the handle is from a remote proces when true *\/$/;"	m	struct:gralloc_drm_bo_t
+info	gralloc_priv.h	/^	struct fb_var_screeninfo info;$/;"	m	struct:private_module_t	typeref:struct:private_module_t::fb_var_screeninfo
+init_drv_from_fd	gralloc_module.cpp	/^init_drv_from_fd(int fd)$/;"	f	file:
+init_frame_buffer	framebuffer_device.cpp	/^static int init_frame_buffer(struct private_module_t *module)$/;"	f	file:
+init_frame_buffer_locked	framebuffer_device.cpp	/^int init_frame_buffer_locked(struct private_module_t *module)$/;"	f
+ion_client	gralloc_priv.h	/^	int ion_client;$/;"	m	struct:private_module_t
+ion_hnd	gralloc_priv.h	/^	ion_user_handle_t ion_hnd;$/;"	m	struct:private_handle_t
+ion_user_handle_t	gralloc_priv.h	/^typedef int ion_user_handle_t;$/;"	t
+ion_user_handle_t	gralloc_priv.h	/^typedef struct ion_handle *ion_user_handle_t;$/;"	t	typeref:struct:ion_handle
+lock	gralloc_priv.h	/^	pthread_mutex_t lock;$/;"	m	struct:private_module_t
+lockState	gralloc_priv.h	/^	int     lockState;$/;"	m	struct:private_handle_t
+lock_count	gralloc_priv.h	/^	int lock_count;$/;"	m	struct:gralloc_drm_bo_t
+locked_for	gralloc_priv.h	/^	int locked_for;$/;"	m	struct:gralloc_drm_bo_t
+magic	gralloc_priv.h	/^	int     magic;$/;"	m	struct:private_handle_t
+mali_gralloc_yuv_info	gralloc_priv.h	/^} mali_gralloc_yuv_info;$/;"	t	typeref:enum:__anon1
+mali_vsync_event	gralloc_vsync_report.h	/^typedef enum mali_vsync_event$/;"	g
+mali_vsync_event	gralloc_vsync_report.h	/^} mali_vsync_event;$/;"	t	typeref:enum:mali_vsync_event
+map	gralloc_priv.h	/^	int (*map)(struct gralloc_drm_drv_t *drv,$/;"	m	struct:gralloc_drm_drv_t
+name	gralloc_drm_xilinx.cpp	/^	uint32_t		name;$/;"	m	struct:xilinx_bo	file:
+numBuffers	gralloc_priv.h	/^	uint32_t numBuffers;$/;"	m	struct:private_module_t
+offset	gralloc_drm_xilinx.cpp	/^	uint64_t offset;$/;"	m	struct:drm_xilinx_gem_map_off	file:
+offset	gralloc_priv.h	/^	int     offset;$/;"	m	struct:private_handle_t
+pad	gralloc_drm_xilinx.cpp	/^	uint32_t pad;$/;"	m	struct:drm_xilinx_gem_map_off	file:
+padding	gralloc_priv.h	/^		uint64_t padding;$/;"	m	union:private_handle_t::__anon5
+pid	gralloc_priv.h	/^	int     pid;$/;"	m	struct:private_handle_t
+private_handle_t	gralloc_priv.h	/^	private_handle_t(int flags, int usage, int size, void *base, int lock_state):$/;"	f	struct:private_handle_t
+private_handle_t	gralloc_priv.h	/^	private_handle_t(int flags, int usage, int size, void *base, int lock_state, int fb_file, int fb_offset):$/;"	f	struct:private_handle_t
+private_handle_t	gralloc_priv.h	/^	private_handle_t(int flags, int usage, int size, void *base, int lock_state, ump_secure_id secure_id, ump_handle handle):$/;"	f	struct:private_handle_t
+private_handle_t	gralloc_priv.h	/^struct private_handle_t : public native_handle$/;"	s
+private_module_t	gralloc_module.cpp	/^private_module_t::private_module_t()$/;"	f	class:private_module_t
+private_module_t	gralloc_priv.h	/^struct private_module_t$/;"	s
+refcount	gralloc_priv.h	/^	unsigned int refcount;$/;"	m	struct:gralloc_drm_bo_t
+resolve_format	gralloc_priv.h	/^	void (*resolve_format)(struct gralloc_drm_drv_t *drv,$/;"	m	struct:gralloc_drm_drv_t
+round_up_to_page_size	gralloc_helper.h	/^inline size_t round_up_to_page_size(size_t x)$/;"	f
+sMagic	gralloc_priv.h	/^	static const int sMagic = 0x3141592;$/;"	m	struct:private_handle_t
+sNumFds	gralloc_priv.h	/^	static const int sNumFds = GRALLOC_ARM_NUM_FDS;$/;"	m	struct:private_handle_t
+s_map_lock	gralloc_module.cpp	/^static pthread_mutex_t s_map_lock = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+s_ump_is_open	gralloc_module.cpp	/^static int s_ump_is_open = 0;$/;"	v	file:
+share_fd	gralloc_priv.h	/^	int     share_fd;$/;"	m	struct:private_handle_t
+size	gralloc_drm_xilinx.cpp	/^	size_t			size;$/;"	m	struct:xilinx_bo	file:
+size	gralloc_drm_xilinx.cpp	/^	uint64_t size;$/;"	m	struct:drm_xilinx_gem_create	file:
+size	gralloc_priv.h	/^	int     size;$/;"	m	struct:private_handle_t
+stride	gralloc_priv.h	/^	int     stride;$/;"	m	struct:private_handle_t
+swapInterval	framebuffer_device.cpp	/^static int swapInterval = 1;$/;"	v	file:
+ump_id	gralloc_priv.h	/^	int     ump_id;$/;"	m	struct:private_handle_t
+ump_mem_handle	gralloc_priv.h	/^	int     ump_mem_handle;$/;"	m	struct:private_handle_t
+unmap	gralloc_priv.h	/^	void (*unmap)(struct gralloc_drm_drv_t *drv,$/;"	m	struct:gralloc_drm_drv_t
+unmap_buffer	gralloc_module.cpp	/^static void unmap_buffer(private_handle_t *hnd)$/;"	f	file:
+usage	gralloc_priv.h	/^	int     usage;$/;"	m	struct:private_handle_t
+usesPhysicallyContiguousMemory	gralloc_priv.h	/^	bool usesPhysicallyContiguousMemory()$/;"	f	struct:private_handle_t
+vaddr	gralloc_drm_xilinx.cpp	/^	void			*vaddr;$/;"	m	struct:xilinx_bo	file:
+validate	gralloc_priv.h	/^	static int validate(const native_handle *h)$/;"	f	struct:private_handle_t
+width	gralloc_priv.h	/^	int     width;$/;"	m	struct:private_handle_t
+writeOwner	gralloc_priv.h	/^	int     writeOwner;$/;"	m	struct:private_handle_t
+xdpi	gralloc_priv.h	/^	float xdpi;$/;"	m	struct:private_module_t
+xilinx	gralloc_drm_xilinx.c	/^	struct xilinx_device *xilinx;$/;"	m	struct:xilinx_info	typeref:struct:xilinx_info::xilinx_device	file:
+xilinx	gralloc_drm_xilinx.cpp	/^	struct xilinx_device *xilinx;$/;"	m	struct:xilinx_info	typeref:struct:xilinx_info::xilinx_device	file:
+xilinx_bo	gralloc_drm_xilinx.cpp	/^struct xilinx_bo {$/;"	s	file:
+xilinx_bo_create	gralloc_drm_xilinx.cpp	/^struct xilinx_bo *xilinx_bo_create(struct xilinx_device *dev,$/;"	f
+xilinx_bo_destroy	gralloc_drm_xilinx.cpp	/^void xilinx_bo_destroy(struct xilinx_bo *bo)$/;"	f
+xilinx_bo_from_handle	gralloc_drm_xilinx.cpp	/^struct xilinx_bo *xilinx_bo_from_handle(struct xilinx_device *dev,$/;"	f
+xilinx_bo_from_name	gralloc_drm_xilinx.cpp	/^struct xilinx_bo *xilinx_bo_from_name(struct xilinx_device *dev,$/;"	f
+xilinx_bo_get_name	gralloc_drm_xilinx.cpp	/^int xilinx_bo_get_name(struct xilinx_bo *bo, uint32_t *name)$/;"	f
+xilinx_bo_handle	gralloc_drm_xilinx.cpp	/^uint32_t xilinx_bo_handle(struct xilinx_bo *bo)$/;"	f
+xilinx_bo_map	gralloc_drm_xilinx.cpp	/^void *xilinx_bo_map(struct xilinx_bo *bo)$/;"	f
+xilinx_buffer	gralloc_drm_xilinx.c	/^struct xilinx_buffer {$/;"	s	file:
+xilinx_buffer	gralloc_drm_xilinx.cpp	/^struct xilinx_buffer {$/;"	s	file:
+xilinx_device	gralloc_drm_xilinx.cpp	/^struct xilinx_device {$/;"	s	file:
+xilinx_device_create	gralloc_drm_xilinx.cpp	/^struct xilinx_device *xilinx_device_create(int fd)$/;"	f
+xilinx_device_destroy	gralloc_drm_xilinx.cpp	/^void xilinx_device_destroy(struct xilinx_device *dev)$/;"	f
+xilinx_info	gralloc_drm_xilinx.c	/^struct xilinx_info {$/;"	s	file:
+xilinx_info	gralloc_drm_xilinx.cpp	/^struct xilinx_info {$/;"	s	file:
+ydpi	gralloc_priv.h	/^	float ydpi;$/;"	m	struct:private_module_t
+yuv_info	gralloc_priv.h	/^	mali_gralloc_yuv_info yuv_info;$/;"	m	struct:private_handle_t
+~private_handle_t	gralloc_priv.h	/^	~private_handle_t()$/;"	f	struct:private_handle_t

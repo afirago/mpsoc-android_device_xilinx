@@ -81,105 +81,19 @@ static int fb_post(struct framebuffer_device_t *dev, buffer_handle_t buffer)
 		m->currentBuffer = 0;
 	}
 
-	if (hnd->flags & private_handle_t::PRIV_FLAGS_FRAMEBUFFER)
-	{
-		m->base.lock(&m->base, buffer, private_module_t::PRIV_USAGE_LOCKED_FOR_POST,
-		             0, 0, m->info.xres, m->info.yres, NULL);
+	void *fb_vaddr;
+	void *buffer_vaddr;
 
-		const size_t offset = (uintptr_t)hnd->base - (uintptr_t)m->framebuffer->base;
-		int interrupt;
-		m->info.activate = FB_ACTIVATE_VBL;
-		m->info.yoffset = offset / m->finfo.line_length;
-
-#ifdef STANDARD_LINUX_SCREEN
-#define FBIO_WAITFORVSYNC       _IOW('F', 0x20, __u32)
-#define S3CFB_SET_VSYNC_INT _IOW('F', 206, unsigned int)
-
-		if (ioctl(m->framebuffer->fd, FBIOPAN_DISPLAY, &m->info) == -1)
-		{
-			AERR("FBIOPAN_DISPLAY failed for fd: %d", m->framebuffer->fd);
-			m->base.unlock(&m->base, buffer);
-			return 0;
-		}
-
-		if (swapInterval == 1)
-		{
-			// enable VSYNC
-			interrupt = 1;
-
-			if (ioctl(m->framebuffer->fd, S3CFB_SET_VSYNC_INT, &interrupt) < 0)
-			{
-				//      AERR("S3CFB_SET_VSYNC_INT enable failed for fd: %d", m->framebuffer->fd);
-				return 0;
-			}
-
-			// wait for VSYNC
-#ifdef MALI_VSYNC_EVENT_REPORT_ENABLE
-			gralloc_mali_vsync_report(MALI_VSYNC_EVENT_BEGIN_WAIT);
-#endif
-			int crtc = 0;
-
-			if (ioctl(m->framebuffer->fd, FBIO_WAITFORVSYNC, &crtc) < 0)
-			{
-				AERR("FBIO_WAITFORVSYNC failed for fd: %d", m->framebuffer->fd);
-#ifdef MALI_VSYNC_EVENT_REPORT_ENABLE
-				gralloc_mali_vsync_report(MALI_VSYNC_EVENT_END_WAIT);
-#endif
-				return 0;
-			}
-
-#ifdef MALI_VSYNC_EVENT_REPORT_ENABLE
-			gralloc_mali_vsync_report(MALI_VSYNC_EVENT_END_WAIT);
-#endif
-			// disable VSYNC
-			interrupt = 0;
-
-			if (ioctl(m->framebuffer->fd, S3CFB_SET_VSYNC_INT, &interrupt) < 0)
-			{
-				AERR("S3CFB_SET_VSYNC_INT disable failed for fd: %d", m->framebuffer->fd);
-				return 0;
-			}
-		}
-
-#else
-		/*Standard Android way*/
-#ifdef MALI_VSYNC_EVENT_REPORT_ENABLE
-		gralloc_mali_vsync_report(MALI_VSYNC_EVENT_BEGIN_WAIT);
-#endif
-
-		if (ioctl(m->framebuffer->fd, FBIOPUT_VSCREENINFO, &m->info) == -1)
-		{
-			AERR("FBIOPUT_VSCREENINFO failed for fd: %d", m->framebuffer->fd);
-#ifdef MALI_VSYNC_EVENT_REPORT_ENABLE
-			gralloc_mali_vsync_report(MALI_VSYNC_EVENT_END_WAIT);
-#endif
-			m->base.unlock(&m->base, buffer);
-			return -errno;
-		}
-
-#ifdef MALI_VSYNC_EVENT_REPORT_ENABLE
-		gralloc_mali_vsync_report(MALI_VSYNC_EVENT_END_WAIT);
-#endif
-#endif
-
-		m->currentBuffer = buffer;
-	}
-	else
-	{
-		void *fb_vaddr;
-		void *buffer_vaddr;
-
-		m->base.lock(&m->base, m->framebuffer, GRALLOC_USAGE_SW_WRITE_RARELY,
+	m->base.lock(&m->base, m->framebuffer, GRALLOC_USAGE_SW_WRITE_RARELY,
 		             0, 0, m->info.xres, m->info.yres, &fb_vaddr);
 
-		m->base.lock(&m->base, buffer, GRALLOC_USAGE_SW_READ_RARELY,
+	m->base.lock(&m->base, buffer, GRALLOC_USAGE_SW_READ_RARELY,
 		             0, 0, m->info.xres, m->info.yres, &buffer_vaddr);
 
-		memcpy(fb_vaddr, buffer_vaddr, m->finfo.line_length * m->info.yres);
+	memcpy(fb_vaddr, buffer_vaddr, m->finfo.line_length * m->info.yres);
 
-		m->base.unlock(&m->base, buffer);
-		m->base.unlock(&m->base, m->framebuffer);
-	}
+	m->base.unlock(&m->base, buffer);
+	m->base.unlock(&m->base, m->framebuffer);
 
 	return 0;
 }

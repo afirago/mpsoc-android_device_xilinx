@@ -304,11 +304,6 @@ struct private_handle_t
 		magic = 0;
 	}
 
-	bool usesPhysicallyContiguousMemory()
-	{
-		return (flags & PRIV_FLAGS_FRAMEBUFFER) ? true : false;
-	}
-
 	static int validate(const native_handle *h)
 	{
 		const private_handle_t *hnd = (const private_handle_t *)h;
